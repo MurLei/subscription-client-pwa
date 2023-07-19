@@ -1,0 +1,78 @@
+<div class="h-[72vh]">
+  <div class="bg-gray-50 shadow p-3 flex justify-between items-center">
+    <div><p class="font-extrabold tracking-wide text-lg text-[#293636]">Your Vehicles:</p></div>
+    <div>
+      <div class="shadow rounded-full bg-black text-white px-2 py-1 text-[13px] tracking-wide font-bold"
+           (click)="openDialog()"><i
+        class="text-[14px] icofont-plus"></i>
+      </div>
+    </div>
+  </div>
+  <div class="p-3 h-[60vh] bg-gray-50 overflow-y-scroll">
+    <div class="px-3 grid grid-cols-1 lg:grid-cols-4 gap-4" *ngIf="!isLoading && this.myVehicles.length > 0;">
+      <div class="mb-3 flex border-b border-blue-300 rounded-lg" *ngFor="let v of myVehicles;index as i"
+           [ngClass]="v['isSelect'] ? 'bg-blue-200 border-green-500' : ''"
+           (click)="chooseVehicle(i)"
+      >
+        <div class="w-1/4 flex justify-center items-center border-r border-dashed">
+          <div class="my-5 rounded-full p-2 shadow-sm text-[#293636] bg-white flex justify-center items-center">
+            <img class="object-contain rounded-lg" *ngIf="v['vehicleImageUrl']" [src]="v['vehicleImageUrl']" width="50px" alt="">
+            <i class="icofont-motor-bike icofont-3x" *ngIf="!v['vehicleImageUrl'] && v['vehicleType'] === 'BIKE'"></i>
+            <i class="icofont-car icofont-3x" *ngIf="!v['vehicleImageUrl'] &&v['vehicleType'] === 'CAR'"></i>
+          </div>
+        </div>
+
+        <div class="w-3/4">
+          <div class="flex justify-end">
+            <div *ngIf="!v['isSubscribed']" class="py-1.5"></div>
+            <div *ngIf="v['isSubscribed']"
+                 class="bg-green-500 text-[12px] text-white rounded-bl-xl rounded-tr-lg px-3 capitalize tracking-wider font-extrabold">
+              subscribed
+            </div>
+          </div>
+          <div class="px-3">
+            <p class="capitalize font-bold text-[14px]">{{v['vehicleName']}}</p>
+            <div
+              class="mt-1 w-max text-center uppercase tracking-wider font-light bg-gray-50 text-[12px] rounded px-3 py-1">
+              <i>{{v['registrationNumber']}}</i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="isLoading">
+      <div class="mb-5 shadow rounded-md p-4 max-w-sm w-full mx-auto" *ngFor="let v of veh">
+        <div class="animate-pulse flex space-x-4">
+          <div class="rounded-full bg-slate-700 h-10 w-10"></div>
+          <div class="flex-1 space-y-6 py-1">
+            <div class="h-2 bg-slate-700 rounded"></div>
+            <div class="space-y-3">
+              <div class="grid grid-cols-3 gap-4">
+                <div class="h-2 bg-slate-700 rounded col-span-2"></div>
+                <div class="h-2 bg-slate-700 rounded col-span-1"></div>
+              </div>
+              <div class="h-2 bg-slate-700 rounded"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div *ngIf="this.myVehicles.length === 0;">
+        <div class="mt-24 w-full text-center"><i class="text-gray-200 icofont-dropbox icofont-10x"></i></div>
+        <div class="my-8 tracking-wide font-bold text-2xl text-center text-gray-400">No Vehicles!</div>
+        <div class="flex justify-center">
+          <button class="capitalize tracking-wider px-3 py-2 text-white bg-[#38538a] rounded" (click)="openDialog()">
+            add vehicle
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<button
+  class="absolute w-full bottom-0 py-3 text-lg tracking-wider font-extrabold text-center uppercase"
+  [ngClass]="selectedVehicle ? 'bg-black text-white' : 'bg-gray-100 text-gray-600'"
+  [disabled]="!selectedVehicle"
+  (click)="purchase()"
+  type="button">Purchase
+</button>

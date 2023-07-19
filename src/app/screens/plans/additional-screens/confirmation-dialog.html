@@ -1,0 +1,67 @@
+<div class="overflow-y-hidden">
+  <div class="h-screen ">
+    <div class="flex justify-center mt-5 p-3">
+      <svg
+        class="mb-3 checkmark"
+        viewBox="0 0 52 52"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle class="checkmark__circle" cx="26" cy="26" fill="none" r="25" />
+        <path
+          class="checkmark__check"
+          d="M14.1 27.2l7.1 7.2 16.7-16.8"
+          fill="none"
+        />
+      </svg>
+    </div>
+  
+    <div class="text-center mt-3">
+      <p class="font-bold tarcking-wider text-[26px] text-[#7ac142]">
+        Subscription <br />
+        Purchased Successfully
+      </p>
+    </div>
+  
+    <div class="px-3 my-3">
+      <p class="text-center text-gray-400 tracking-wide">
+        For <span class="font-medium text-gray-600">{{plan}}</span> your <span class="font-medium text-gray-600">
+          {{vehicleName}}</span> <br> will get activated on {{startDate | date:'MMM - d - y'}}</p>
+    </div>
+  
+      <div class="rounded-xl mx-3">
+        <div class="flex justify-center my-3 p-3 ">
+          <img [src]="data.tagedVehicle.vehicleImageUrl" alt="" width="150px">
+        </div>
+        <div class="text-center my-3 py-3">
+          <p class="font-medium tracking-wide">{{vehicleName}}</p>
+          <p class="font-medium tracking-wide text-gray-400 uppercase">{{vehicleRegNo}}</p>
+        </div>
+      </div>
+  
+  
+    <div class="flex items-center justify-between mt-5 p-3 mx-3 text-center border rounded">
+      <div>
+        <p class="font-light tracking-wide text-gray-400 text-[13px]">
+          Service Start date
+        </p>
+        <p class="text-xs tracking-wide font-medium">
+          {{startDate | date:'MMM - d - Y'}}
+        </p>
+      </div>
+      <div>
+        <p class="font-light tracking-wide text-gray-400 text-[13px]">
+          Service End date
+        </p>
+        <p class="text-xs tracking-wide font-medium">{{endDate | date:'MMM - d - Y'}}</p>
+      </div>
+    </div>
+  
+    <!-- <div class="flex justify-center py-5 my-5">
+      <button mat-raised-button>Download PDF</button>
+    </div> -->
+  </div>
+  
+  <div class="m-5 p-3 z-[15] -mt-[120px]">
+    <img class="opacity-30" src="../../../../assets/logo/ra_logo.png" alt="" />
+  </div>
+</div>

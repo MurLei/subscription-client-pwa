@@ -1,0 +1,113 @@
+<div class="bg-indigo-700">
+  <div class="flex justify-between items-center p-2">
+    <div></div>
+    <div class="rounded-full border border-white text-center px-1 py-0.5 m-2" (click)="goBack()">
+      <i class="icofont-close text-white text-lg"></i>
+    </div>
+    <!--    <div class="rounded bg-gray-50 rounded py-1 px-2"><i class="icofont-heart text-red-500"></i></div>-->
+  </div>
+  <div class="px-3 my-1">
+    <div class="ml-2">
+      <p class="tracking-wide font-bold text-lg text-white" *ngIf="customer">Hi, {{customer['name']}}</p>
+    </div>
+    <div class="my-2">
+      <div class="px-1 flex space-x-3 items-center">
+        <div class="bg-orange-100 rounded-full px-2 py-1 text-orange-500"><i class="icofont-label"></i></div>
+        <div>
+          <p class="tracking-wide font-semibold text-sm text-gray-50">Total Subscriptions</p>
+        </div>
+      </div>
+      <div class="my-3">
+        <p class="text-center text-5xl tracking-wide font-extrabold text-white">{{subscriptions.length}} <span
+            class="text-base font-normal text-gray-100">Plans</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mx-1 bg-gray-50 rounded-t-3xl h-[75.6vh]">
+    <div class="mb-5 flex justify-center">
+      <div class="mt-2 w-10 border-2 rounded-full"></div>
+    </div>
+    <div class="h-[70vh] flex justify-center overflow-y-scroll overflow-hidden">
+      <div class="flex justify-center flex-wrap gap-4 ">
+        <!-- <div class="border-r border-b w-1/2 flex flex-col justify-center items-center p-2"
+             *ngFor="let s of subscriptions;index as i"
+             [ngClass]="s['subscriptionStatus'] === 'EXPIRED' || s['subscriptionStatus'] === 'IN-ACTIVE' ? 'bg-red-100' : ''"
+             (click)="openSubscriptionDetail(s)">
+
+          <div class="flex justify-center items-center p-3 rounded-xl" [ngStyle]="{'background-border': s['color']}">
+            <img class="object-contain rounded-lg" [src]="s['subscriptionPlan']['imageurl']" alt="Plan">
+          </div>
+
+          <div class="">
+            <p class="font-medium text-center tracking-wide text-gray-700">{{s['subscriptionPlan']['name']}}</p>
+                     <p class="text-center font-bold tracking-wide text-gray-700">&#8377;699</p>
+            <div class="mt-2 text-center">
+              <i class="icofont-motor-bike icofont-2x" *ngIf="s['subscriptionPlan']['vehicleType'] === 'BIKE'"></i>
+              <i class="icofont-car icofont-2x" *ngIf="s['subscriptionPlan']['vehicleType'] === 'CAR'"></i>
+            </div>
+          </div>
+        </div> -->
+        <div class="border w-[165px] rounded-lg shadow-sm z-10  bg-white" *ngFor="let s of subscriptions;index as i"
+          [ngClass]="s['subscriptionStatus'] === 'EXPIRED' || s['subscriptionStatus'] === 'IN-ACTIVE' ? 'bg-red-100' : ''"
+          (click)="openSubscriptionDetail(s)">
+
+          <div class="flex justify-center items-center">
+            <img class="object-contain rounded-lg w-[100px] h-[100px]" [src]="s['subscriptionPlan']['imageurl']" alt="Plan">
+          </div>
+
+          <div class="py-2">
+            <p class="font-medium text-center tracking-wide text-gray-700">
+              {{s['subscriptionPlan']['name']}}
+              <!-- EV Comprehensive AMC -->
+            </p>
+          </div>
+
+          <div class="text-center pb-2">
+            <i class="uppercase text-sky-800 font-semibold tracking-wide text-[10px]">{{s['subscriptionPlan']['vehicleType'] === 'BIKE'? 'bike':'car'}}</i>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!--<div class="h-[100vh] overflow-y-scroll">-->
+<!--  <div class="px-3 my-2">-->
+<!--    <p class="tracking-wide font-bold text-sm text-gray-700">My Subscription:</p>-->
+<!--  </div>-->
+<!--  <mat-accordion>-->
+<!--    <div class="my-3 px-3 flex flex-col space-y-5">-->
+<!--      <div class="mb-4 bg-gray-50 rounded-3xl" *ngFor="let p of plans">-->
+<!--        <div>-->
+<!--          <img class="rounded-t-lg w-full" src="https://www.readyassist.in/assets/plans/4.jpg" alt="">-->
+<!--        </div>-->
+<!--        <div class="my-3 px-3 flex justify-between items-center">-->
+<!--          <div>-->
+<!--            <p class="font-extrabold tracking-wider text-lg text-gray-800">&#8377; 2999</p>-->
+<!--            <p class="font-semibold text-sm tracking-wide text-gray-600">Plan Name</p>-->
+<!--          </div>-->
+<!--          <div>-->
+<!--            <div class="px-3 py-2 rounded bg-white tracking-wider text-gray-500 font-bold text-xs">2/5</div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <mat-expansion-panel hideToggle>-->
+<!--          <mat-expansion-panel-header class="border-t border-green-100">-->
+<!--            <mat-panel-description>-->
+<!--              <p class="text-center text-xs tracking-wide font-thin capitalize"-->
+<!--                 [ngClass]="isOpen ? 'border-b-2' : ''">View Details</p>-->
+<!--            </mat-panel-description>-->
+<!--          </mat-expansion-panel-header>-->
+<!--          <div>-->
+<!--            <div class="p-5">-->
+<!--              hello-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </mat-expansion-panel>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </mat-accordion>-->
+<!--</div>-->
