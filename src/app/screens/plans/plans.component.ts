@@ -25,6 +25,7 @@ export class PlansComponent implements OnInit {
   isAll = true;
   plans: any[] = [];
   planDetails: any;
+  
   planServiceDetails: any;
   vehicleTypes: any[] = [];
   plansToggle = [{ name: 'Description', isSelect: true }, { name: 'About Client', isSelect: false }];
